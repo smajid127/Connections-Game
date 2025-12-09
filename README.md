@@ -1,5 +1,5 @@
 # Connections-Game
-Simple clone of the NYT game Connections
+Created a simple clone of the NYT game, Connections.
 
 ## Starting the game
 In a terminal, run `npm install`, followed by `npm start`.
