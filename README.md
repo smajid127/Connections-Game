@@ -1,5 +1,6 @@
 # Connections-Game
 Created a simple clone of the NYT game, Connections.
+
 See original game at: https://www.nytimes.com/games/connections
 
 ## Starting the game
