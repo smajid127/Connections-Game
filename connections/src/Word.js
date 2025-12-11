@@ -2,7 +2,7 @@ import clsx from 'clsx';
 
 const Word = ({ word, handleSelectWord, selectLimitReached }) => {
     return (
-        <div key={word.word} className={
+        <div className={
             clsx("Game-cell",
                 word.isSelected && "Game-cell-selected",
                 selectLimitReached && !word.isSelected && "Game-cell-disabled")}

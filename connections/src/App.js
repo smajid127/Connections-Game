@@ -13,7 +13,7 @@ function App() {
         (<div className="App-start-screen">
           <img src={gameLogo} className="App-logo" alt="logo" />
           <h1 className='App-header'>Connections</h1>
-          <button onClick={() => setShowGame(true)} className="App-play-btn" type="button">Play</button>
+          <button onClick={() => setShowGame(true)} className="App-play-btn" type="button" aria-label="Play game">Play</button>
         </div>
         )
 

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import './Game.css';
 import Word from './Word';
 
@@ -42,7 +42,7 @@ function Game() {
 
 
     // Reveal all remaining solutions when the game is lost
-    const revealSolutions = useCallback(() => {
+    const revealSolutions = () => {
         let groupedWords = {};
         words.forEach((word) => {
             if (word.group in groupedWords) {
@@ -62,23 +62,23 @@ function Game() {
         setWords([]);
         setGroupsFound(prev => [...prev, ...groupsToReveal]);
 
-    }, [groupsFound, words]);
+    };
 
-    const shuffleWords = useCallback(() => {
+    const shuffleWords = () => {
         setWords(prevWords => {
             const shuffled = [...prevWords];
             shuffled.sort(() => Math.random() - 0.5);
             return shuffled;
         });
-    }, [setWords])
+    };
 
-    const deselectAll = useCallback(() => {
+    const deselectAll = () => {
         setWords(prevWords => prevWords.map(word => ({ ...word, isSelected: false })));
         setNumSelected(0);
-    }, [setWords]);
+    };
 
 
-    const handleSelectWord = useCallback((word) => {
+    const handleSelectWord = (word) => {
         // Toggle selection state for a word and update count of selected words
         setWords(prevWords => {
             const updatedWords = prevWords.map(w =>
@@ -87,10 +87,10 @@ function Game() {
             setNumSelected(updatedWords.filter(w => w.isSelected).length);
             return updatedWords;
         });
-    }, [setWords]);
+    };
 
 
-    let handleSubmit = useCallback(() => {
+    const handleSubmit = () => {
 
         let selected = words.filter(word => word.isSelected);
         let group = selected[0].group;
@@ -120,7 +120,7 @@ function Game() {
             }
         }
         setNumSelected(0);
-    }, [words, groupsFound, mistakesRemaining, revealSolutions]);
+    };
 
 
     const getGroupColor = (difficulty) => {
