@@ -61,7 +61,6 @@ function Game() {
         });
         setWords([]);
         setGroupsFound(prev => [...prev, ...groupsToReveal]);
-
     };
 
     const shuffleWords = () => {
@@ -91,7 +90,6 @@ function Game() {
 
 
     const handleSubmit = () => {
-
         let selected = words.filter(word => word.isSelected);
         let group = selected[0].group;
         let validGroup = selected.every(word => word.group === group);
@@ -103,15 +101,17 @@ function Game() {
                 difficulty: selected[0].difficulty
             };
             setGroupsFound([...groupsFound, foundGroup]);
+            setWords(words => words.filter(word => !word.isSelected))
+            setNumSelected(0);
+
             // Once all four groups are found, end the game with a win
             if (groupsFound.length + 1 === GROUPS_NEEDED) {
                 setGameOver(true);
                 setGameWon(true);
             }
-            setWords(words.filter(word => !word.isSelected));
-
         } else {
-            setWords(words.map(word => ({ ...word, isSelected: false })));
+            // Invalid solution -- update mistakesRemaining
+            deselectAll();
             setMistakesRemaining(prev => prev - 1);
             // If no mistakes remain, end the game and reveal solutions
             if (mistakesRemaining - 1 === 0) {
@@ -119,7 +119,6 @@ function Game() {
                 revealSolutions();
             }
         }
-        setNumSelected(0);
     };
 
 

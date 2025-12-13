@@ -95,6 +95,7 @@
 .Game-action-btns button {
     padding: 1rem 1.5rem;
     border: 1.5px solid black;
+    font-weight: bold;
     background-color: inherit;
     border-radius: 1.8rem;
     font-size: 1rem;
